@@ -11,3 +11,6 @@
 Session.vim
 .netrwhist
 *~
+
+# emacs files
+projectile-bookmark.eld
