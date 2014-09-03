@@ -6,10 +6,10 @@
 (setq mmm-linum-disabled-modes
       '(neotree-mode))
 
-(setq global-linum-mode t)
-(add-hook 'neotree-mode-hook
-	  (lambda()
-	    (linum-mode nil)))
+(global-linum-mode t)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;(require 'column-maker)
 ;(column-maker-1 80)
