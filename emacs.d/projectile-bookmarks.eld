@@ -1,1 +1,0 @@
-("~/.dotfiles/" "~/.oh-my-zsh/" "~/projects/smartearly/" "~/.dotfiles/emacs.d/el-get/el-get/")
