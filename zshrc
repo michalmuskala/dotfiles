@@ -15,7 +15,7 @@ ZSH_THEME="gallois"
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -57,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl:$HOME/.rvm/bin"
+export PATH="$HOME/.bin:$HOME/.rvm/bin:/usr/local/heroku/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -76,18 +76,13 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl:$H
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Heroku
 hs() { heroku "$@" -r staging; }
 hp() { heroku "$@" -r production; }
 compdef hs='heroku'
 compdef hp='heroku'
 
-
 export NVM_DIR="/home/thor/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
