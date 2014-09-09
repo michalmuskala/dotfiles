@@ -33,6 +33,8 @@
 	flx
 	smex
 	ido-vertical-mode
-	undo-tree))
+	undo-tree
+        smartparens
+        yasnippet))
 
 (el-get 'sync (mapcar 'prin1-to-string mmm/packages))

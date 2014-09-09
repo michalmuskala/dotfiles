@@ -1,15 +1,12 @@
 ;; flx
 (require 'flx-ido)
-(ido-mode t)
-(ido-everywhere t)
+(ido-mode          t)
+(ido-everywhere    t)
 (ido-vertical-mode t)
-(flx-ido-mode t)
+(flx-ido-mode      t)
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
-
-;; Projectile
-(projectile-global-mode)
 
 ;; Smex
 (require 'smex)
