@@ -1,3 +1,7 @@
+(defun mmm/replace-in-string (what with in)
+  "Replace all occurences of WHAT with WHITH in IN"
+  (replace-regexp-in-string (regexp-quote what) with in))
+
 ; Minimal system settings to load as early as possible
 (mmm/load-file "system/minimal" t)
 

@@ -11,10 +11,10 @@
 ;; el-get - see https://github.com/dimitri/el-get
 (setq el-get-dir (expand-file-name "el-get" user-emacs-directory))
 
-(add-to-list 'load-path 
+(add-to-list 'load-path
              (expand-file-name "el-get/el-get" user-emacs-directory))
-(unless (require 'el-get nil t) 
-  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" 
+(unless (require 'el-get nil t)
+  (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
                 (lambda (s) (end-of-buffer) (eval-print-last-sexp))))
 
 (setq mmm/packages
@@ -29,12 +29,21 @@
         multi-term
         flymake-ruby
         neotree
-	projectile
-	flx
-	smex
-	ido-vertical-mode
-	undo-tree
+        projectile
+        flx
+        smex
+        ido-vertical-mode
+        undo-tree
         smartparens
-        yasnippet))
+        yasnippet
+        fill-column-indicator
+        markdown-mode
+        column-marker))
 
 (el-get 'sync (mapcar 'prin1-to-string mmm/packages))
+
+(setq fci-rule-color "dim gray")
+(set-face-attribute 'vertical-border
+                    nil
+                    :foreground "dim gray")
+(setq column-maker-1-face 'vertical-border)
