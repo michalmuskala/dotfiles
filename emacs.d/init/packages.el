@@ -1,3 +1,4 @@
+
 (require 'package)
 
 (dolist (repo '(("marmalade" . "http://marmalade-repo.org/packages/")
@@ -29,7 +30,6 @@
         multi-term
         flymake-ruby
         neotree
-        projectile
         flx
         smex
         ido-vertical-mode
@@ -38,12 +38,9 @@
         yasnippet
         fill-column-indicator
         markdown-mode
-        column-marker))
+        elixir
+        web-mode
+        sublime-themes
+        move-text))
 
 (el-get 'sync (mapcar 'prin1-to-string mmm/packages))
-
-(setq fci-rule-color "dim gray")
-(set-face-attribute 'vertical-border
-                    nil
-                    :foreground "dim gray")
-(setq column-maker-1-face 'vertical-border)

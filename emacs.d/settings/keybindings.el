@@ -6,8 +6,5 @@
 ; disable those awful tabs
 (setq-default indent-tabs-mode nil)
 
-(defun mmm-reload-config ()
-  (interactive)
-  (load-file "~/.emacs"))
-
-(global-set-key (kbd "C-c E") 'mmm-reload-config)
+(global-set-key [C-S-up]   'move-text-up)
+(global-set-key [C-S-down] 'move-text-down)

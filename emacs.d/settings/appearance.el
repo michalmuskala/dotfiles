@@ -12,7 +12,17 @@
       display-time-24hr-format  t)
 (display-time)
 
+; Set vertical rules colours
+(setq fci-rule-color "dim gray")
+(set-face-attribute 'vertical-border
+                    nil
+                    :foreground "dim gray")
+
 ; Load theme
-(add-to-list 'custom-theme-load-path 
-             (expand-file-name "themes" user-emacs-directory))
-(load-theme 'rubytapas t)
+(load-theme 'wilson t)
+
+; Linum
+(defun linum-format-func (line)
+  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+     (propertize (format (format " %%%dd" w) line) 'face 'linum)))
+(setq linum-format 'linum-format-func)

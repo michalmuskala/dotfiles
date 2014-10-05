@@ -4,3 +4,5 @@
 
 ; Update buffer when file changes
 (global-auto-revert-mode t)
+
+(setq require-final-newline 'visit-save)
