@@ -14,4 +14,5 @@
 ;; activate character pairing
 (smartparens-mode)
 
-(setq c-default-style "k&r")
+(setq c-default-style "k&r"
+      c-basic-offset 4)

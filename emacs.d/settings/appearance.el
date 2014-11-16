@@ -6,11 +6,11 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
+; Start maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ; Modebar
 (column-number-mode t)
-(setq display-time-day-and-date t
-      display-time-24hr-format  t)
-(display-time)
 
 ; Set vertical rules colours
 (setq fci-rule-color "dim gray")

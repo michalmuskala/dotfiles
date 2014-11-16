@@ -1,4 +1,3 @@
-
 (require 'package)
 
 (dolist (repo '(("marmalade" . "http://marmalade-repo.org/packages/")
@@ -22,7 +21,6 @@
       '(el-get
         magit
         rvm
-        rhtml-mode
         coffee-mode
         haml-mode
         inf-ruby
@@ -41,6 +39,10 @@
         elixir
         web-mode
         sublime-themes
-        move-text))
+        move-text
+        paredit
+        multiple-cursors))
 
 (el-get 'sync (mapcar 'prin1-to-string mmm/packages))
+
+(mmm/load-file "vendor/rcodetools")
