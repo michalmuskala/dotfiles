@@ -1,2 +1,4 @@
-backup
+/backup
 /el-get
+/session.*
+/url
