@@ -16,6 +16,9 @@
 
 (setq js-indent-level 2)
 
+;; autocomplete
+(company-mode)
+
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 ; (flyspell-prog-mode)
 

@@ -8,6 +8,8 @@
 ;; show junk whitespace
 (whitespace-mode)
 
+(linum-mode)
+
 ;; activate character pairing
 (smartparens-mode)
 
@@ -25,14 +27,13 @@
   (sp-local-pair "while"  nil :actions :rem)
   (sp-local-pair "until"  nil :actions :rem))
 
+;; autocomplete
+(company-mode)
+
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 (flyspell-prog-mode)
 
 (local-set-key (kbd "C-c v s") 'mmm/toggle-program-spelling)
-
-;; command shortcuts
-;(local-set-key (kbd "C-M-n") 'jeg2/other-window-next-line)
-;(local-set-key (kbd "C-M-p") 'jeg2/other-window-previous-line)
 
 (local-set-key (kbd "C-c =") 'mmm/align=)
 

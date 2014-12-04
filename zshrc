@@ -86,3 +86,8 @@ alias ec="$VISUAL"
 
 # Set PATH from path
 export PATH
+
+
+# Temp fix for grep deprecation
+alias grep="grep $GREP_OPTIONS"
+export GREP_OPTIONS=""

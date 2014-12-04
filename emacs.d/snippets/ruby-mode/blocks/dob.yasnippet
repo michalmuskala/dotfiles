@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: do with block variables
+# key: dob
+# --
+do${1:$(if (> (length yas-text) 0) " |" "")}${1:variable}${1:$(if (> (length yas-text) 0) "|" "")}
+  $0
+end

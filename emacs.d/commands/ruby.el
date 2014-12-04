@@ -1,25 +1,6 @@
 (require 'cl-macs)
 
 ;;;###autoload
-;; (defun mmm/toggle-ruby-test ()
-;;   "Toggler between positive and negative assertions."
-;;   (interactive)
-;;   (let ((bound (save-excursion (unless (bolp) (move-beginning-of-line nil))
-;;                                (point))))
-;;     (if (search-backward "refute" bound t)
-;;         (replace-match "assert")
-;;       (if (search-backward "assert" bound t)
-;;           (replace-match "refute")
-;;         (if (search-backward "wont" bound t)
-;;             (replace-match "must")
-;;           (if (search-backward "must" bound t)
-;;               (replace-match "wont")
-;;             (if (search-backward "not_to" bound t)
-;;                 (replace-match "to")
-;;               (if (search-backward "to" bound t)
-;;                   (replace-match "not_to")))))))))
-
-;;;###autoload
 (defun mmm/toggle-ruby-block-type ()
   "Toggle between brace and do/end block types."
   (interactive)

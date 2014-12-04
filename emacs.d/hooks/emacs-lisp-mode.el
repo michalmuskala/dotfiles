@@ -4,6 +4,7 @@
 
 (local-set-key (kbd "C-c f") 'paredit-forward-slurp-sexp)
 (local-set-key (kbd "C-c F") 'paredit-forward-barf-sexp)
+(local-set-key (kbd "C-c e") 'mmm/eval-and-replace)
 
 ;; show wrap guide
 (require 'fill-column-indicator)
@@ -17,6 +18,9 @@
 
 ;; show junk whitespace
 (whitespace-mode)
+
+;; Autocomplete
+(company-mode)
 
 ;; do some spell checking
 (flyspell-prog-mode)

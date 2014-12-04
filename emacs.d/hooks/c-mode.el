@@ -16,3 +16,6 @@
 
 (setq c-default-style "k&r"
       c-basic-offset 4)
+
+;; autocomplete
+(company-mode)

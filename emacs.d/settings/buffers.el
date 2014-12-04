@@ -5,4 +5,8 @@
 ; Update buffer when file changes
 (global-auto-revert-mode t)
 
+; Always add newline at the end when saving
 (setq require-final-newline 'visit-save)
+
+; Disable scratch buffer - use ielm instead
+(kill-buffer "*scratch*")

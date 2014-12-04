@@ -26,3 +26,9 @@
   (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
      (propertize (format (format " %%%dd" w) line) 'face 'linum)))
 (setq linum-format 'linum-format-func)
+
+;; Fringe
+(require 'git-gutter-fringe+)
+(global-git-gutter+-mode t)
+(git-gutter+-toggle-fringe)
+(git-gutter-fr+-minimal)
