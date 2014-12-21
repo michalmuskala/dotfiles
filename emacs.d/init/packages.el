@@ -21,7 +21,6 @@
 (setq mmm/packages
       '(el-get
         magit
-        rvm
         coffee-mode
         haml-mode
         inf-ruby
@@ -37,18 +36,18 @@
         yasnippet
         fill-column-indicator
         markdown-mode
-        elixir
         web-mode
         sublime-themes
         move-text
         paredit
         multiple-cursors
         yaml-mode
+        elixir
+        alchemist
         company-mode
         expand-region
         robe-mode
-        rust-mode
-        git-gutter-fringe+))
+        rust-mode))
 
 ;; Custom recipies
 (push '(:name yasnippet

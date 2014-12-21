@@ -2,6 +2,6 @@
 /el-get
 /session.*
 /url
-/.mc.lists.el
+/.mc-lists.el
 /elpa
 /eshell

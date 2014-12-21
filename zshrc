@@ -7,10 +7,6 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -80,13 +76,13 @@ fi
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"
 export VISUAL="emacsclient -n -c"
+export GIT_EDITOR="$EDITOR"
 alias e="$EDITOR"
 alias se="sudo $EDITOR"
 alias ec="$VISUAL"
 
 # Set PATH from path
 export PATH
-
 
 # Temp fix for grep deprecation
 alias grep="grep $GREP_OPTIONS"

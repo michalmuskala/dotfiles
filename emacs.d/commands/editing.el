@@ -3,5 +3,4 @@
   "Kills to the end of line and clears the whitespace"
   (interactive "P")
   (kill-line arg)
-  (mmm/trim-forwards t)
-  (insert " "))
+  (mmm/trim-forwards t))

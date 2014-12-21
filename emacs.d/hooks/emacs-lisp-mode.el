@@ -6,13 +6,6 @@
 (local-set-key (kbd "C-c F") 'paredit-forward-barf-sexp)
 (local-set-key (kbd "C-c e") 'mmm/eval-and-replace)
 
-;; show wrap guide
-(require 'fill-column-indicator)
-(setq fci-rule-column mmm/wrap-limit)
-(fci-mode)
-
-(local-set-key (kbd "C-c v w") 'fci-mode)
-
 ;; show line numbers
 (linum-mode)
 
