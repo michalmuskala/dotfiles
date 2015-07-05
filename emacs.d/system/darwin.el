@@ -1,1 +1,0 @@
-; OSX specific settings

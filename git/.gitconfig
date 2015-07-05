@@ -1,0 +1,82 @@
+[user]
+  email = michal@muskala.eu
+  name = Michal Muskala
+[rerere]
+  enabled = 1
+  autoupdate = 1
+[alias]
+  s = status -s -b
+  ss = status
+  ##########
+  d = diff
+  ##########
+  c = commit
+  cm = commit -m
+  ca = commit --amend
+  ##########
+  a = add
+  ad = add .
+  aa = add -A
+  ap = add -p
+  ##########
+  l = log --oneline
+  lg = log --oneline --graph --decorate
+  ##########
+  co = checkout
+  cob = checkout -b
+  ##########
+  rb = rebase
+  rbi = rebase -i
+  ##########
+  b = branch
+  ba = branch -a
+  bm = branch --merge
+  bnm = branch --no-merge
+  ##########
+  m = merge
+  ##########
+  st = stash
+  stp = stash pop
+  sta = stash apply
+  ##########
+  ps = push
+  pl = pull
+  plrb = pull --rebase
+  ##########
+  subpl = submodule foreach git pull --rebase origin master
+[color]
+  ui = true
+[color "branch"]
+  current = yellow bold
+  local = white
+  remote = cyan
+[color "diff"]
+  meta = white dim
+  frag = cyan dim
+  # old = normal
+  # new = normal
+  whitespace = red reverse
+[color "status"]
+  added = green
+  changed = red
+  untracked = yellow
+[color "decorate"]
+  HEAD = green
+  branch = blue
+  remoteBranch = cyan
+  stash = white dim
+  tag = magenta
+[push]
+  default = tracking
+[branch]
+  autosetupmerge = true
+[diff]
+  tool = meld
+[merge]
+  tool = meld
+[difftool]
+  prompt = false
+[core]
+  excludesfile = ~/.gitignore
+[credential]
+	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
