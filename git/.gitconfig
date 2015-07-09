@@ -41,7 +41,6 @@
   ##########
   ps = push
   pl = pull
-  plrb = pull --rebase
   ##########
   subpl = submodule foreach git pull --rebase origin master
 [color]
@@ -66,6 +65,8 @@
   remoteBranch = cyan
   stash = white dim
   tag = magenta
+[pull]
+	rebase = true
 [push]
   default = tracking
 [branch]
@@ -78,5 +79,3 @@
   prompt = false
 [core]
   excludesfile = ~/.gitignore
-[credential]
-	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring

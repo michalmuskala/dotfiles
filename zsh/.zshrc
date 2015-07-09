@@ -58,6 +58,10 @@ source $ZSH/oh-my-zsh.sh
 typeset -U path
 path+=($HOME/bin)
 
+if which ruby >/dev/null && which gem >/dev/null; then
+    path+=($(ruby -rubygems -e 'puts Gem.user_dir')/bin)
+fi
+
 # Emacs
 export TERM="xterm-256color"
 export ALTERNATE_EDITOR=""
