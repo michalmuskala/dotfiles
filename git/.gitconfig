@@ -1,9 +1,6 @@
 [user]
   email = michal@muskala.eu
   name = Michal Muskala
-[rerere]
-  enabled = 1
-  autoupdate = 1
 [alias]
   s = status -s -b
   ss = status
@@ -65,8 +62,11 @@
   remoteBranch = cyan
   stash = white dim
   tag = magenta
+[rerere]
+  enabled = 1
+  autoupdate = 1
 [pull]
-	rebase = true
+  rebase = true
 [push]
   default = tracking
 [branch]

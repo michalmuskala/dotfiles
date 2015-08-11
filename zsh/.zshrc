@@ -59,7 +59,9 @@ typeset -U path
 path+=($HOME/bin)
 
 if which ruby >/dev/null && which gem >/dev/null; then
-    path+=($(ruby -rubygems -e 'puts Gem.user_dir')/bin)
+    local gem_dir=$(ruby -rubygems -e 'puts Gem.user_dir')
+    path+=($gem_dir/bin)
+    export GEM_HOME="$gem_dir"
 fi
 
 # Emacs
