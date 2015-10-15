@@ -38,6 +38,7 @@
   ##########
   ps = push
   pl = pull
+	plum = pull upstream master
   ##########
   subpl = submodule foreach git pull --rebase origin master
 [color]
@@ -78,4 +79,4 @@
 [difftool]
   prompt = false
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.global_gitignore

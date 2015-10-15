@@ -57,12 +57,7 @@ source $ZSH/oh-my-zsh.sh
 # Keep path clean using zsh magic
 typeset -U path
 path+=($HOME/bin)
-
-if which ruby >/dev/null && which gem >/dev/null; then
-    local gem_dir=$(ruby -rubygems -e 'puts Gem.user_dir')
-    path+=($gem_dir/bin)
-    export GEM_HOME="$gem_dir"
-fi
+path+=($HOME/.cabal/bin)
 
 # Emacs
 export TERM="xterm-256color"
@@ -74,6 +69,9 @@ export SUDO_EDITOR="$EDITOR"
 alias e="$EDITOR"
 alias se="sudo $EDITOR"
 alias ec="$VISUAL"
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # Set PATH from path
 export PATH
