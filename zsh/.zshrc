@@ -49,29 +49,14 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt history-substring-search)
+plugins=(git git-prompt history-substring-search stack)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-# Keep path clean using zsh magic
-typeset -U path
-path+=($HOME/bin)
-path+=($HOME/.cabal/bin)
-
-# Emacs
-export TERM="xterm-256color"
-export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"
-export VISUAL="emacsclient -n -c"
-export GIT_EDITOR="$EDITOR"
-export SUDO_EDITOR="$EDITOR"
 alias e="$EDITOR"
 alias se="sudo $EDITOR"
 alias ec="$VISUAL"
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# Set PATH from path
-export PATH
+# Ruby
+alias bundle-bootstrap="bundle install --binstubs=.bundle/bin --path=.bundle/gems"

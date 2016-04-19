@@ -12,6 +12,9 @@ Session.vim
 .netrwhist
 *~
 
+# JS
+.tern-port
+
 # emacs files
 projectile-bookmark.eld
 .\#*
@@ -19,3 +22,7 @@ projectile-bookmark.eld
 
 # Mix fast
 .mix_tasks
+
+# Bundler
+.bundle
+db-*.sql.dump

@@ -14,12 +14,14 @@
    '(
      ;; settings
      better-defaults
-     (git :variables
-          git-magit-status-fullscreen t)
+     git
+     github
      version-control
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-position 'bottom
+            shell-default-shell 'eshell
+            shell-enable-smart-eshell t)
      syntax-checking
      spell-checking
      auto-completion
@@ -37,8 +39,15 @@
      latex
      yaml
      ruby
+     python
+     racket
+     rust
+     c-c++
      ;; Frameworks
      ruby-on-rails
+     react
+     ;; Config files
+     dockerfile
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -125,7 +134,7 @@ before layers configuration."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content.
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state t
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -184,6 +193,8 @@ before layers configuration."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  ;; (add-to-list 'exec-path "~/.local/bin/")
   )
 
 (defun dotspacemacs/config ()
@@ -200,7 +211,7 @@ layers configuration."
         web-mode-css-indent-offset 2
         web-mode-markup-indent-offset 2)
 
-  ;; (setq alchemist-mix-test-default-options "")
+  (global-git-commit-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
