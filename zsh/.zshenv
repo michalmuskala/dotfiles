@@ -2,6 +2,7 @@
 typeset -U path
 path+=($HOME/.local/bin)
 path+=($HOME/bin)
+path+=($HOME/.cask/bin)
 
 # Emacs
 export TERM="xterm-256color"
