@@ -1,1 +1,1 @@
-../spacemacs
+../_vendor/spacemacs

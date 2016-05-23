@@ -8,6 +8,7 @@ To install use [GNU Stow](https://www.gnu.org/software/stow/manual/stow.html)
 * `stow emacs`
 * `stow zsh`
 * `stow ruby`
+* `stow erlang`
 
 To update
 

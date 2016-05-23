@@ -1,9 +1,12 @@
 [submodule "oh-my-zsh"]
-	path = oh-my-zsh
+	path = _vendor/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule "spacemacs"]
-	path = spacemacs
+	path = _vendor/spacemacs
 	url = https://github.com/syl20bnr/spacemacs
 [submodule "cask"]
-	path = cask
+	path = _vendor/cask
 	url = https://github.com/cask/cask
+[submodule "_vendor/kerl"]
+	path = _vendor/kerl
+	url = git@github.com:kerl/kerl.git
