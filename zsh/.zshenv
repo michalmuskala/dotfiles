@@ -12,5 +12,8 @@ export VISUAL="emacsclient -n -c"
 export GIT_EDITOR="$EDITOR"
 export SUDO_EDITOR="$EDITOR"
 
+# make
+export MAKEFLAGS=-j8
+
 # Set PATH from path
 export PATH
