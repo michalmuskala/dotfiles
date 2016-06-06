@@ -60,3 +60,20 @@ alias ec="$VISUAL"
 
 # Ruby
 alias bundle-bootstrap="bundle install --binstubs=.bundle/bin --path=.bundle/gems"
+
+export ERLANG_VERSION="18.3"
+export ELIXIR_VERSION="master"
+
+# Erlang
+if [ -f /opt/erlang/"$ERLANG_VERSION"/activate ]; then
+    source /opt/erlang/"$ERLANG_VERSION"/activate
+else
+    echo "No erlang installation found in /opt/erlang/$ERLANG_VERSION"
+fi
+
+# Elixir
+if [ -f /opt/elixir/"$ELIXIR_VERSION"/activate ]; then
+    source /opt/elixir/"$ELIXIR_VERSION"/activate
+else
+    echo "No elixir installation found in /opt/elixir/$ELIXIR_VERSION"
+fi

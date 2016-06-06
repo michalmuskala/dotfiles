@@ -1,0 +1,86 @@
+#!/bin/sh
+
+set -e
+
+ELIXIR_SRC_PATH="$HOME/projects/elixir"
+
+install_elixir()
+{
+    version="$1"
+    install_path="/opt/elixir/$version"
+    mkdir -p install_path
+    cd "$ELIXIR_SRC_PATH"
+    PREFIX="$install_path" make --eval=".IGNORE: erlang" install
+    cat <<EOF > "$install_path/activate"
+# credits to kerl
+elixir_deactivate()
+{
+    if [ -n "\$_ELIXIR_PATH_REMOVABLE" ]; then
+        PATH=\${PATH//\${_ELIXIR_PATH_REMOVABLE}:/}
+        export PATH
+        unset _ELIXIR_PATH_REMOVABLE
+    fi
+    if [ -n "\$_ELIXIR_MANPATH_REMOVABLE" ]; then
+        MANPATH=\${MANPATH//\${_ELIXIR_MANPATH_REMOVABLE}:/}
+        export MANPATH
+        unset _ELIXIR_MANPATH_REMOVABLE
+    fi
+    if [ -n "\$_ELIXIR_ACTIVE_DIR" ]; then
+        unset _ELIXIR_ACTIVE_DIR
+    fi
+    if [ -n "\$BASH" -o -n "\$ZSH_VERSION" ]; then
+        hash -r
+    fi
+    if [ ! "\$1" = "nondestructive" ]; then
+        unset -f elixir_deactivate
+    fi
+}
+elixir_deactivate nondestructive
+_ELIXIR_PATH_REMOVABLE="$install_path/bin"
+PATH="\${_ELIXIR_PATH_REMOVABLE}:\$PATH"
+export PATH _ELIXIR_PATH_REMOVABLE
+_ELIXIR_MANPATH_REMOVABLE="$install_path/share/man"
+MANPATH="\${_ELIXIR_MANPATH_REMOVABLE}:\$MANPATH"
+export MANPATH _ELIXIR_MANPATH_REMOVABLE
+_ELIXIR_ACTIVE_DIR="$install_path"
+export _ELIXIR_ACTIVE_DIR
+if [ -n "\$BASH" -o -n "\$ZSH_VERSION" ]; then
+    hash -r
+fi
+EOF
+}
+
+build_elixir()
+{
+    version="$1"
+    cd "$ELIXIR_SRC_PATH"
+    git checkout "$version"
+    make clean
+    make
+}
+
+usage()
+{
+    echo "Usage: install-elixir build|install version"
+}
+
+if [ $# -lt 2 ]
+then
+    usage
+    exit 1
+fi
+
+VERSION="$2"
+
+case "$1" in
+    build)
+        build_elixir "$VERSION"
+        ;;
+    install)
+        install_elixir "$VERSION"
+        ;;
+    *)
+        echo "Unknown command $1"
+        usage
+        exit 1
+esac
