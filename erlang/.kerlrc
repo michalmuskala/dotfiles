@@ -1,3 +1,5 @@
+export CFLAGS="-D_GNU_SOURCE -DOPENSSL_NO_EC=1"
+
 KERL_CONFIGURE_OPTIONS="--disable-debug
                         --disable-silent-rules
                         --without-javac
@@ -11,4 +13,5 @@ KERL_CONFIGURE_OPTIONS="--disable-debug
                         --enable-threads
                         --enable-kernel-poll
                         --with-wx
-                        --enable-wx"
+                        --enable-wx
+                        --with-ssl"

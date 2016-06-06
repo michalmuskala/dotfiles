@@ -32,6 +32,7 @@ values."
      spell-checking
      auto-completion
      colors
+     eyebrowse
      ;; languages
      emacs-lisp
      (org :variables
