@@ -21,6 +21,7 @@ values."
      ;; settings
      better-defaults
      git
+     osx
      github
      version-control
      (shell :variables

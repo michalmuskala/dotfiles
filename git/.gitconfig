@@ -1,6 +1,7 @@
 [user]
   email = michal@muskala.eu
   name = Michal Muskala
+  signingkey = 4160CF28
 [alias]
   s = status -s -b
   ss = status
@@ -80,3 +81,5 @@
   prompt = false
 [core]
   excludesfile = ~/.global_gitignore
+[commit]
+  gpgsign = true
