@@ -2,15 +2,16 @@
 
 set -e
 
-ELIXIR_SRC_PATH="$HOME/projects/elixir"
+ELIXIR_SRC_PATH="$HOME/src/oss/elixir"
+INSTALL_PATH="/opt/elixir"
 
 install_elixir()
 {
     version="$1"
-    install_path="/opt/elixir/$version"
+    install_path="$INSTALL_PATH/$version"
     mkdir -p install_path
     cd "$ELIXIR_SRC_PATH"
-    PREFIX="$install_path" make --eval=".IGNORE: erlang" install
+    PREFIX="$install_path" make install
     cat <<EOF > "$install_path/activate"
 # credits to kerl
 elixir_deactivate()
@@ -55,6 +56,7 @@ build_elixir()
     version="$1"
     cd "$ELIXIR_SRC_PATH"
     git checkout "$version"
+    git pull --rebase upstream "$version"
     make clean
     make
 }
