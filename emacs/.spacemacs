@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     php
      ;; settings
      better-defaults
      git
@@ -33,7 +34,7 @@ values."
      spell-checking
      auto-completion
      colors
-     eyebrowse
+     dash
      ;; languages
      emacs-lisp
      (org :variables
@@ -56,14 +57,14 @@ values."
      ruby-on-rails
      react
      ;; Config files
-     dockerfile
+     docker
      ansible
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(ediprolog)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -130,7 +131,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 18
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -189,7 +190,7 @@ values."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state t
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -204,14 +205,14 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup  nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -272,16 +273,57 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq powerline-default-separator 'alternate)
+  (spaceline-compile)
 
-  (setq alchemist-hooks-compile-on-save t)
+  (setq blink-matching-paren nil)
+  (setq sp-highlight-pair-overlay nil)
+
+  (setq alchemist-hooks-compile-on-save nil)
   (setq alchemist-test-status-modeline nil)
-  (push '("*alchemist test report*" :position bottom :stick t :noselect t)
+
+  (push '("*alchemist test report*" :position bottom :noselect t)
         popwin:special-display-config)
-  (setq display-buffer-alist
-        '((popwin:display-buffer-condition (display-buffer-reuse-window
-                                            popwin:display-buffer-action)
-                                           (reusable-frames . visible))))
+  (setq popwin:reuse-window 'visible)
+
+  (spacemacs|diminish alchemist-mode)
+  (spacemacs|diminish alchemist-phoenix-mode)
+
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2)
+
+  (setq json-reformat:indent-width 2)
+
+  (setq c-default-style "k&r"
+        c-basic-offset 4)
+
+  (setq mac-option-key-is-meta t)
+  (setq mac-right-option-modifier nil)
+
+  (setq org-catch-invisible-edits 'smart)
+
+  ; Prolog
+  (autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
+  (setq prolog-system 'swi) ; prolog-system below for possible values
+  (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+  (require 'ediprolog)
+  (global-set-key [f10] 'ediprolog-dwim)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (bind-map powerline rake spinner hydra auto-complete company iedit highlight git-gutter request skewer-mode gh pcre2el ediprolog auctex-latexmk go-guru rust-mode ob-elixir org minitest multiple-cursors hide-comnt docker-tramp auctex anzu elixir-mode ht inflections inf-ruby dash phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode go-mode anaconda-mode smartparens undo-tree flyspell-correct yasnippet helm helm-core haskell-mode flycheck magit-popup async projectile f js2-mode pug-mode magit git-commit with-editor evil-unimpaired zenburn-theme yapfify yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-mode rainbow-identifiers rainbow-delimiters racket-mode racer quelpa pyvenv pytest pyenv-mode py-isort projectile-rails popwin pip-requirements persp-mode pbcopy paradox ox-gfm osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode launchctl js2-refactor js-doc jinja2-mode jade-mode intero info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio go-eldoc gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-mix flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav dumb-jump dockerfile-mode docker disaster diff-hl dash-at-point cython-mode company-web company-tern company-statistics company-go company-ghci company-ghc company-cabal company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clean-aindent-mode clang-format chruby cargo bundler auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

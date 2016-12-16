@@ -1,5 +1,6 @@
 # Keep path clean using zsh magic
 typeset -U path
+path+=(/usr/local/sbin)
 path+=($HOME/.local/bin)
 path+=($HOME/bin)
 path+=($HOME/.cask/bin)

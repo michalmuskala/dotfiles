@@ -58,11 +58,27 @@ alias e="$EDITOR"
 alias se="sudo $EDITOR"
 alias ec="$VISUAL"
 
+# System completions
+fpath+=(/usr/local/share/zsh-completions)
+
 # Ruby
 alias bundle-bootstrap="bundle install --binstubs=.bundle/bin --path=.bundle/gems"
 
-export ERLANG_VERSION="18.3"
+export ERLANG_VERSION="19.2"
 export ELIXIR_VERSION="master"
+
+notify()
+{
+    command="$@"
+    eval "$command"
+    ret=$?
+    if [ $ret != 0 ]; then
+        terminal-notifier -title "Failed" -message "$command"
+        return $ret
+    else
+        terminal-notifier -title "Done" -message "$command"
+    fi
+}
 
 # Erlang
 if [ -f /opt/erlang/"$ERLANG_VERSION"/activate ]; then
@@ -77,3 +93,8 @@ if [ -f /opt/elixir/"$ELIXIR_VERSION"/activate ]; then
 else
     echo "No elixir installation found in /opt/elixir/$ELIXIR_VERSION"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f /Users/michalmuskala/.travis/travis.sh ] && source /Users/michalmuskala/.travis/travis.sh
