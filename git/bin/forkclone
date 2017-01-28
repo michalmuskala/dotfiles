@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+set -x
+
+GITHUB_USER="michalmuskala"
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: forkclone username/repo"
+    exit 1
+fi
+
+IFS="/"; declare -a Array=($1); unset IFS;
+USER="${Array[0]}"
+REPO="${Array[1]}"
+
+pushd "$HOME/src/oss"
+git clone "git@github.com:$USER/$REPO.git" "$REPO"
+cd "$REPO"
+hub fork
+git remote rename origin upstream
+git remote rename "$GITHUB_USER" origin
+popd
