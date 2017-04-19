@@ -1,0 +1,11 @@
+#!/usr/bin/env escript
+% -*- mode: erlang -*-
+
+main([BeamFile|Format]) ->
+    {ok,{_,[{abstract_code,{_,AC}}]}} = beam_lib:chunks(BeamFile,[abstract_code]),
+    {ok, _, _} = compile:forms(AC, [format(Format)]),
+    ok.
+    %% io:fwrite("~s~n", [erl_prettypr:format(erl_syntax:form_list(AC))]).
+
+format([]) -> 'S';
+format([String]) -> list_to_atom(String).
