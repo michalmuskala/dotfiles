@@ -2,6 +2,10 @@
 % -*- mode: erlang -*-
 
 main([BeamFile|Format]) ->
+    ElixirRoot = string:strip(os:cmd("echo $(dirname $(which elixir))/.."), both, $\n),
+    true = code:add_path(filename:join(ElixirRoot,
+                                       "lib/elixir/lib/elixir/ebin")),
+    {ok, _} = application:ensure_all_started(elixir),
     {ok,{_,[{abstract_code,{_,AC}}]}} = beam_lib:chunks(BeamFile,[abstract_code]),
     {ok, _, _} = compile:forms(AC, [format(Format)]),
     ok.

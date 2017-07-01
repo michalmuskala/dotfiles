@@ -67,7 +67,7 @@ fpath+=(/usr/local/share/zsh-completions)
 # Ruby
 alias bundle-bootstrap="bundle install --binstubs=.bundle/bin --path=.bundle/gems"
 
-export ERLANG_VERSION="19.2"
+export ERLANG_VERSION="20.0-rc2"
 export ELIXIR_VERSION="master"
 
 notify()
