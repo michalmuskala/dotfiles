@@ -11,6 +11,7 @@
   c = commit
   cm = commit -m
   ca = commit --amend
+	can = commit --amend --no-edit
   ##########
   a = add
   ad = add .
