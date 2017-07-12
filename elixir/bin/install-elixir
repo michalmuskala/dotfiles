@@ -49,6 +49,41 @@ if [ -n "\$BASH" -o -n "\$ZSH_VERSION" ]; then
     hash -r
 fi
 EOF
+    cat <<EOF > "$install_path/activate.fish"
+# credits to kerl
+function _elixir_remove_el --description 'remove element from array'
+    set -l new_array
+    for el in \$\$argv[1]
+        if test \$el != \$argv[2]
+            set new_array \$new_array \$el
+        end
+    end
+    set -x \$argv[1] \$new_array
+end
+function elixir_deactivate --description "deactivate erlang environment"
+    if set --query _ELIXIR_PATH_REMOVABLE
+        _elixir_remove_el PATH "\$_ELIXIR_PATH_REMOVABLE"
+        set --erase _ELIXIR_PATH_REMOVABLE
+    end
+    if set --query _ELIXIR_MANPATH_REMOVABLE
+        _elixir_remove_el MANPATH "\$_ELIXIR_MANPATH_REMOVABLE"
+        set --erase _ELIXIR_MANPATH_REMOVABLE
+    end
+    if set --query _ELIXIR_ACTIVE_DIR
+        set --erase _ELIXIR_ACTIVE_DIR
+    end
+    if test "\$argv[1]" != "nondestructive"
+        functions --erase elixir_deactivate
+        functions --erase _elixir_remove_el
+    end
+end
+elixir_deactivate nondestructive
+set -x _ELIXIR_PATH_REMOVABLE "$install_path/bin"
+set -x PATH "\$_ELIXIR_PATH_REMOVABLE" \$PATH
+set -x _ELIXIR_MANPATH_REMOVABLE "$install_path/share/man"
+set -x MANPATH \$MANPATH "\$_ELIXIR_MANPATH_REMOVABLE"
+set -x _ELIXIR_ACTIVE_DIR "$install_path"
+EOF
 }
 
 build_elixir()
