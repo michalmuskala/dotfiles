@@ -1,90 +1,92 @@
 [user]
-  email = michal@muskala.eu
-  name = Michal Muskala
-  signingkey = 4160CF28
+    email = michal@muskala.eu
+    name = Michał Muskała
+    signingkey = 4160CF28
 [alias]
-  s = status -s -b
-  ss = status
-  ##########
-  d = diff
-  ##########
-  c = commit
-  cm = commit -m
-  ca = commit --amend
-	can = commit --amend --no-edit
-  ##########
-  a = add
-  ad = add .
-  aa = add -A
-  ap = add -p
-  ##########
-  l = log --oneline
-  lg = log --oneline --graph --decorate
-  ##########
-  co = checkout
-  cob = checkout -b
-  ##########
-  rb = rebase
-  rbi = rebase -i
-  ##########
-  b = branch
-  ba = branch -a
-  bm = branch --merge
-  bnm = branch --no-merge
-  ##########
-  m = merge
-  ##########
-  st = stash
-  stp = stash pop
-  sta = stash apply
-  ##########
-  ps = push
-	psf = push --force-with-lease
-  pl = pull
-	plum = pull upstream master
-  ##########
-  subpl = submodule foreach git pull --rebase origin master
-	##########
-	stat = !git --no-pager diff --shortstat
+    s = status -s -b
+    ss = status
+    ##########
+    d = diff
+    ##########
+    c = commit
+    cm = commit -m
+    ca = commit --amend
+    can = commit --amend --no-edit
+    ##########
+    a = add
+    ad = add .
+    aa = add -A
+    ap = add -p
+    ##########
+    l = log --oneline
+    lg = log --oneline --graph --decorate
+    ##########
+    co = checkout
+    cob = checkout -b
+    ##########
+    rb = rebase
+    rbi = rebase -i
+    ##########
+    b = branch
+    ba = branch -a
+    bm = branch --merge
+    bnm = branch --no-merge
+    ##########
+    m = merge
+    ##########
+    st = stash
+    stp = stash pop
+    sta = stash apply
+    ##########
+    ps = push
+    psf = push --force-with-lease
+    pl = pull
+    plum = pull upstream master
+    ##########
+    subpl = submodule foreach git pull --rebase origin master
+    ##########
+    stat = !git --no-pager diff --shortstat
+    ##########
+    cp = cherry-pick -s
 [color]
-  ui = true
+    ui = true
 [color "branch"]
-  current = yellow bold
-  local = white
-  remote = cyan
+    current = yellow bold
+    local = white
+    remote = cyan
 [color "diff"]
-  meta = white dim
-  frag = cyan dim
-  # old = normal
-  # new = normal
-  whitespace = red reverse
+    meta = white dim
+    frag = cyan dim
+    # old = normal
+    # new = normal
+    whitespace = red reverse
 [color "status"]
-  added = green
-  changed = red
-  untracked = yellow
+    added = green
+    changed = red
+    untracked = yellow
 [color "decorate"]
-  HEAD = green
-  branch = blue
-  remoteBranch = cyan
-  stash = white dim
-  tag = magenta
+    HEAD = green
+    branch = blue
+    remoteBranch = cyan
+    stash = white dim
+    tag = magenta
 [rerere]
-  enabled = 1
-  autoupdate = 1
+    enabled = 1
+    autoupdate = 1
 [pull]
-  rebase = true
+    rebase = true
 [push]
-  default = tracking
+    default = tracking
 [branch]
-  autosetupmerge = true
+    autosetupmerge = true
 [diff]
-  tool = open-diff
-	compactionHeuristic = true
+    tool = open-diff
+    compactionHeuristic = true
 [merge]
-  tool = open-diff
+    tool = open-diff
 [difftool]
-  prompt = false
+    prompt = false
 [core]
-  excludesfile = ~/.global_gitignore
+    excludesfile = ~/.global_gitignore
 [commit]
-  gpgsign = true
+    gpgsign = true
